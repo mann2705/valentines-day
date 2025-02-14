@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff4d6d, #ff758f, #ffadad);
+            animation: backgroundTransition 6s infinite alternate;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes backgroundTransition {
+            0% { background: linear-gradient(45deg, #ff4d6d, #ff758f, #ffadad); }
+            50% { background: linear-gradient(45deg, #ff0000, #ff4d6d, #ff758f); }
+            100% { background: linear-gradient(45deg, #d10000, #ff0000, #ff4d6d); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .message {
+            font-size: 1.5rem;
+            max-width: 80%;
+            opacity: 0;
+            animation: fadeIn 3s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: white;
+            color: #ff4d6d;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #ff758f;
+            color: white;
+        }
+
+        .heart {
+            position: absolute;
+            top: -10px;
+            color: red;
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <audio id="valentineSong" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>Happy Valentine's Day, Shivani! ❤️</h1>
+    <p class="message">Shivani, you are the most beautiful part of my life. Every moment with you is magical, and I feel so lucky to have you by my side. Today, I just want to remind you how much I love you. 💕</p>
+
+    <button class="button" onclick="window.location.href='page2.html'">Click for a Surprise! 💖</button>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRINCESS & A Tiny Apology ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(45deg, #ff4d6d, #ff758f, #ffadad);
+            animation: backgroundTransition 6s infinite alternate;
+            overflow-y: scroll;
+            padding: 50px 10px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .letter {
+            font-size: 1.5rem;
+            max-width: 80%;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .heart {
+            position: absolute;
+            top: -10px;
+            color: red;
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .apology {
+            font-size: 1.4rem;
+            margin-top: 40px;
+            padding: 15px;
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .visible-apology {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <audio id="valentineSong4" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>PRINCESS 💖</h1>
+
+    <p class="letter">P - Pretty | Pricey (cuz pretty pricey as well) 💎</p>
+    <p class="letter">R - Responsible | Rich (not responsibly rich) 💰</p>
+    <p class="letter">I - Intelligent | Idiot (my intelligent idiot) 🤓</p>
+    <p class="letter">N - Neat | (Neat people aren’t fun 😉)</p>
+    <p class="letter">C - Cute & Confident (you have a cute and confident soul) 🥰</p>
+    <p class="letter">E - Extraordinary | Energetic (your energy is extraordinary) ⚡</p>
+    <p class="letter">S - Sexy | Shivani (don’t need to explain 😉) 🔥</p>
+    <p class="letter">S - Supportive | Spirited (you support me with so much spirit!) 💖</p>
+
+    <p class="apology">
+        I just want to say I’m sorry for any fights we’ve had. I hate the thought of us arguing,  
+        and I know sometimes I can be stubborn. But one thing that never changes is how much I love you. 💕  
+        You are the best thing that has ever happened to me, and I never take that for granted.  
+        Thank you for always being by my side, for putting up with me, and for loving me the way you do.  
+        <br><br>
+        And... maybe, just *maybe*, you could be **a little less annoying sometimes**? 😜  
+        (Just kidding, please never change—you’re perfect the way you are.)  
+        I love you, forever and always. 💖
+    </p>
+
+    <button class="button" onclick="window.location.href='index.html'">Back to First Page</button>
+
+    <script>
+        document.addEventListener("scroll", function () {
+            let letters = document.querySelectorAll(".letter");
+            letters.forEach(letter => {
+                let position = letter.getBoundingClientRect().top;
+                let windowHeight = window.innerHeight;
+                if (position < windowHeight - 50) {
+                    letter.classList.add("visible");
+                }
+            });
+
+            let apologyText = document.querySelector(".apology");
+            let apologyPosition = apologyText.getBoundingClientRect().top;
+            if (apologyPosition < window.innerHeight - 50) {
+                apologyText.classList.add("visible-apology");
+            }
+        });
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
